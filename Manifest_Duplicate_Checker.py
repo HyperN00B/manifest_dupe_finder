@@ -2,12 +2,15 @@ import os
 import sys
 import time
 
-vCurrentPath=os.getcwd()
+vCurrentPath=os.path.dirname(os.path.abspath(sys.argv[0]))
 vManifestsFound=[]
-vHasSubfolder=False
 vCurrentPathList=vCurrentPath.split("/")
+vHasSubfolder=False
+
+os.system("clear")
 
 def mReadFolderContent(miPath): # Reads the xml files in the main and subfolder and appends them into a list which gets returned
+	global vHasSubfolder
 	if not vCurrentPathList[len(vCurrentPathList)-1]=="manifests" and ".git" in os.listdir(miPath):
 		os.system("clear")
 		print("This script must be run inside a freshly inited \".repo/manifests/\" folder!")
